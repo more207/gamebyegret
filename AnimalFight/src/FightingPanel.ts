@@ -1,0 +1,4 @@
+class FightingPanel {
+	public constructor() {
+	}
+}
