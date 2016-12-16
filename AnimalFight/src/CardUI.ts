@@ -2,6 +2,9 @@ class CardUI extends egret.Sprite{
 
 	public _isSetted : boolean = false;
 
+	public _handIndex :number = 0;
+	public _setIndex : number = 0;
+
 	private _mainLabel : egret.TextField;
 	private _subLabel : egret.TextField;
 

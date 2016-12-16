@@ -69,7 +69,7 @@ class GameData {
                 this.myDeck.push(oneCard);
             } else if(i%3 == 1) {
                 oneCard._handIndex = youHandIndex;
-                oneCard._handIndex = youHandIndex;
+                oneCard._setIndex = youHandIndex;
                 youHandIndex++;
                 this.youDeck.push(oneCard);
             } else {

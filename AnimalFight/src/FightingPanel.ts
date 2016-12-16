@@ -58,6 +58,7 @@ class FightingPanel extends egret.Sprite {
 			aCardUI.x = this._handPosition[i].x;
 			aCardUI.y = this._handPosition[i].y;
 			aCardUI.touchEnabled = true;
+			aCardUI._handIndex = i;
 			aCardUI.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchCard, this);
 
 			this._cards.push(aCardUI); 
@@ -72,6 +73,14 @@ class FightingPanel extends egret.Sprite {
 				return;
 			}
 		}
+
+		var gd:GameData = GameData.getInstance();
+		for (var i = 0; i < 5 ; i++) {
+			var aCard : Card = gd.myDeck[i];
+			var aCardUI:CardUI = this._cards[i];
+			aCard._setIndex = aCardUI._setIndex;
+		}
+		
 
 		this.dispatchEvent(GameEvent.getEventByName(GameEvent.GAME_FIGHT));
 	}
@@ -101,16 +110,16 @@ class FightingPanel extends egret.Sprite {
 		var selected:CardUI = evt.target;
 		if(selected._isSetted) {
 			selected._isSetted = false;
-			selected.x = this._handPosition[selected._card._handIndex].x;
-			selected.y = this._handPosition[selected._card._handIndex].y;
-			this._setFlg[selected._card._setIndex] = false;
+			selected.x = this._handPosition[selected._handIndex].x;
+			selected.y = this._handPosition[selected._handIndex].y;
+			this._setFlg[selected._setIndex] = false;
 		} else {
 			selected._isSetted = true;
 			for(var i = 0; i< 5; i++){
 				if(!this._setFlg[i]) {
 					selected.x = this._setPosition[i].x;
 					selected.y = this._setPosition[i].y;
-					selected._card._setIndex = i;
+					selected._setIndex = i;
 					this._setFlg[i] = true;
 					break;
 				}

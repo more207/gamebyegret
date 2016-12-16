@@ -16,7 +16,7 @@ class ResultPanel extends egret.Sprite {
         this._returnTopBtn.text = "Top";
         this._returnTopBtn.size = 50;
         this._returnTopBtn.x = 80;
-        this._returnTopBtn.y = 900;
+        this._returnTopBtn.y = 950;
 		this._returnTopBtn.width = 200;
 		this._returnTopBtn.textAlign = egret.HorizontalAlign.CENTER;
 		this._returnTopBtn.touchEnabled = true;
@@ -27,7 +27,7 @@ class ResultPanel extends egret.Sprite {
         this._restartBtn.text = "Restart";
         this._restartBtn.size = 50;
         this._restartBtn.x = 360;
-        this._restartBtn.y = 900;
+        this._restartBtn.y = 950;
 		this._restartBtn.width = 200;
 		this._restartBtn.textAlign = egret.HorizontalAlign.CENTER;
 		this._restartBtn.textColor = GameColor.c_blue;
