@@ -1,7 +1,9 @@
 class GameData {
 	
-	public winCount = 0;
-	public playCount = 0;
+	public winCount:number = 0;
+	public playCount:number = 0;
+
+    public cardCount:number = 15;
 
     public cardDeck:Array<Card> = null;
     public myDeck:Array<Card> = null;
@@ -43,15 +45,38 @@ class GameData {
         this.youDeck = new Array<Card>();
         this.otherDeck = new Array<Card>();
 
-        for(var i = 1; i< 6;i++){
-            for(var j = 1; j < 4;j++) {
+        for(var i = 0; i< 5;i++){
+            for(var j = 0; j < 3;j++) {
                var oneCard = new Card(i,j);
                this.cardDeck.push(oneCard); 
             }
         }
     }
 
-    public dealGame():void{
+    public sendCard():void{
         
+        var myHandIndex = 0;
+        var youHandIndex = 0;
+        
+        for (var i = 15; i > 0;i--) {
+            var pickIdx = Math.floor(Math.random() * i);
+            var oneCard : Card = this.cardDeck.splice(pickIdx,1)[0];
+            
+            if(i%3 == 0) {
+                oneCard._handIndex = myHandIndex;
+                oneCard._setIndex = myHandIndex;
+                myHandIndex++;
+                this.myDeck.push(oneCard);
+            } else if(i%3 == 1) {
+                oneCard._handIndex = youHandIndex;
+                oneCard._handIndex = youHandIndex;
+                youHandIndex++;
+                this.youDeck.push(oneCard);
+            } else {
+                this.otherDeck.push(oneCard);
+            }
+
+        }
+
     }
 }

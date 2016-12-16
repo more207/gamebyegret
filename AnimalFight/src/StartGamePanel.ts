@@ -64,12 +64,15 @@ class StartGamePanel extends egret.Sprite {
 	}
 
 	private onStartBtnClick(evt:egret.TouchEvent):void{
-
+		this.dispatchEvent(GameEvent.getEventByName(GameEvent.GAME_START));
 	}
 
 	private onResetBtnClick(evt:egret.TouchEvent):void{
 		GameData.getInstance().resetCount();
 	}
+
+	public updatePanel():void {
 		
+	}
 	
 }

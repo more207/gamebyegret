@@ -111,14 +111,26 @@ class Main extends egret.DisplayObjectContainer {
     }
 
     private _startGamePanel:StartGamePanel;
+    private _fightPanel:FightingPanel;
+    private _resultPanel:ResultPanel;
 
     /**
      * 创建游戏场景
      * Create a game scene
      */
     private createGameScene():void {
-       this._startGamePanel = new StartGamePanel();
-       this.addChild(this._startGamePanel);
+
+        this._fightPanel = new FightingPanel();
+        this._fightPanel.addEventListener(GameEvent.GAME_FIGHT, this.onFight, this);
+        this._fightPanel.addEventListener(GameEvent.RETURN_TOP, this.onReturnTop, this);
+
+        this._resultPanel = new ResultPanel();
+        this._resultPanel.addEventListener(GameEvent.GAME_START, this.onStartGame, this);
+        this._resultPanel.addEventListener(GameEvent.RETURN_TOP, this.onReturnTop, this);
+
+        this._startGamePanel = new StartGamePanel();
+        this._startGamePanel.addEventListener(GameEvent.GAME_START, this.onStartGame, this);
+        this.addChild(this._startGamePanel);
     }
 
     /**
@@ -130,6 +142,44 @@ class Main extends egret.DisplayObjectContainer {
         let texture:egret.Texture = RES.getRes(name);
         result.texture = texture;
         return result;
+    }
+
+    private onStartGame(evt:GameEvent):void {
+
+        var gd:GameData = GameData.getInstance();
+		gd.resetGame();
+		gd.sendCard();
+
+        this.cleanStage();
+
+        this._fightPanel.resetView();
+        this.addChild(this._fightPanel);
+    }
+
+    private onFight(evt:GameEvent):void {
+        console.log("onFight");
+        this.cleanStage();
+
+        this._resultPanel.resetView();
+        this.addChild(this._resultPanel);
+    }
+
+    private onReturnTop(evt:GameEvent):void {
+        console.log("onReturnTop");
+        this.cleanStage();
+        this.addChild(this._startGamePanel);
+    }
+
+    private cleanStage() {
+        if(this._startGamePanel.parent) {
+            this.removeChild(this._startGamePanel);
+        }
+        if(this._resultPanel.parent){
+            this.removeChild(this._resultPanel);
+        }
+        if(this._fightPanel.parent){
+            this.removeChild(this._fightPanel);
+        }
     }
 
    

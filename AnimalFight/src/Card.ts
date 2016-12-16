@@ -10,6 +10,9 @@ class Card {
 
 	public _mainKey : number;
 	public _subKey : number;
+
+	public _handIndex : number;
+	public _setIndex : number;
 	
 	public getMainText():string {
 		return AFKey.MK_TEXT[this._mainKey];
@@ -17,6 +20,10 @@ class Card {
 
 	public getSubText():string{
 		return AFKey.SK_TEXT[this._subKey];
+	}
+
+	public toString():string {
+		return "main:" + this.getMainText() + " sub:" + this.getSubText();
 	}
 
 	public static isFirstBiggerTheSecond(first:Card,second:Card):boolean {
