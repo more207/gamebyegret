@@ -23,7 +23,6 @@ var StartGamePanel = (function (_super) {
         this._recordTitleLbl.textAlign = egret.HorizontalAlign.CENTER;
         this.addChild(this._recordTitleLbl);
         this._recordLbl = new egret.TextField();
-        this._recordLbl.text = "0/0";
         this._recordLbl.size = 40;
         this._recordLbl.x = 0;
         this._recordLbl.y = 400;
@@ -51,12 +50,19 @@ var StartGamePanel = (function (_super) {
         this.addChild(this._resetBtn);
         this._resetBtn.touchEnabled = true;
         this._resetBtn.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onResetBtnClick, this);
+        this.resetView();
     };
     p.onStartBtnClick = function (evt) {
+        this.dispatchEvent(GameEvent.getEventByName(GameEvent.GAME_START));
     };
     p.onResetBtnClick = function (evt) {
         GameData.getInstance().resetCount();
     };
+    p.resetView = function () {
+        var gd = GameData.getInstance();
+        this._recordLbl.text = gd.getPointString();
+    };
     return StartGamePanel;
 }(egret.Sprite));
 egret.registerClass(StartGamePanel,'StartGamePanel');
+//# sourceMappingURL=StartGamePanel.js.map

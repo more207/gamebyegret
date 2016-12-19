@@ -87,7 +87,8 @@ class FightingPanel extends egret.Sprite {
 
 	private onGiveUpBtnClick(evt:egret.TouchEvent):void {
 
-
+		var gd :GameData = GameData.getInstance();
+		gd.playCount ++;
 
 		this.dispatchEvent(GameEvent.getEventByName(GameEvent.RETURN_TOP));
 	}

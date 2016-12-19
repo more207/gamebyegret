@@ -101,7 +101,14 @@ var Main = (function (_super) {
      * Create a game scene
      */
     p.createGameScene = function () {
+        this._fightPanel = new FightingPanel();
+        this._fightPanel.addEventListener(GameEvent.GAME_FIGHT, this.onFight, this);
+        this._fightPanel.addEventListener(GameEvent.RETURN_TOP, this.onReturnTop, this);
+        this._resultPanel = new ResultPanel();
+        this._resultPanel.addEventListener(GameEvent.GAME_START, this.onStartGame, this);
+        this._resultPanel.addEventListener(GameEvent.RETURN_TOP, this.onReturnTop, this);
         this._startGamePanel = new StartGamePanel();
+        this._startGamePanel.addEventListener(GameEvent.GAME_START, this.onStartGame, this);
         this.addChild(this._startGamePanel);
     };
     /**
@@ -114,6 +121,38 @@ var Main = (function (_super) {
         result.texture = texture;
         return result;
     };
+    p.onStartGame = function (evt) {
+        var gd = GameData.getInstance();
+        gd.resetGame();
+        gd.sendCard();
+        this.cleanStage();
+        this._fightPanel.resetView();
+        this.addChild(this._fightPanel);
+    };
+    p.onFight = function (evt) {
+        console.log("onFight");
+        this.cleanStage();
+        this._resultPanel.resetView();
+        this.addChild(this._resultPanel);
+    };
+    p.onReturnTop = function (evt) {
+        console.log("onReturnTop");
+        this.cleanStage();
+        this._startGamePanel.resetView();
+        this.addChild(this._startGamePanel);
+    };
+    p.cleanStage = function () {
+        if (this._startGamePanel.parent) {
+            this.removeChild(this._startGamePanel);
+        }
+        if (this._resultPanel.parent) {
+            this.removeChild(this._resultPanel);
+        }
+        if (this._fightPanel.parent) {
+            this.removeChild(this._fightPanel);
+        }
+    };
     return Main;
 }(egret.DisplayObjectContainer));
 egret.registerClass(Main,'Main');
+//# sourceMappingURL=Main.js.map

@@ -31,7 +31,6 @@ class StartGamePanel extends egret.Sprite {
 		this.addChild(this._recordTitleLbl);
 
 		this._recordLbl = new egret.TextField();
-		this._recordLbl.text = "0/0";
 		this._recordLbl.size = 40;
 		this._recordLbl.x = 0;
 		this._recordLbl.y = 400;
@@ -61,6 +60,8 @@ class StartGamePanel extends egret.Sprite {
         this.addChild( this._resetBtn );
         this._resetBtn.touchEnabled = true;
         this._resetBtn.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onResetBtnClick, this);
+
+		this.resetView();
 	}
 
 	private onStartBtnClick(evt:egret.TouchEvent):void{
@@ -71,8 +72,10 @@ class StartGamePanel extends egret.Sprite {
 		GameData.getInstance().resetCount();
 	}
 
-	public updatePanel():void {
-		
+	public resetView():void {
+
+		var gd : GameData = GameData.getInstance();
+		this._recordLbl.text = gd.getPointString();
 	}
 	
 }

@@ -10,6 +10,9 @@ var Card = (function () {
     p.getSubText = function () {
         return AFKey.SK_TEXT[this._subKey];
     };
+    p.toString = function () {
+        return "main:" + this.getMainText() + " sub:" + this.getSubText();
+    };
     Card.isFirstBiggerTheSecond = function (first, second) {
         if (first._mainKey != second._mainKey) {
             if (first._mainKey > second._mainKey) {
@@ -51,3 +54,4 @@ var Card = (function () {
     return Card;
 }());
 egret.registerClass(Card,'Card');
+//# sourceMappingURL=Card.js.map

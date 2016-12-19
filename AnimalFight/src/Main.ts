@@ -167,6 +167,7 @@ class Main extends egret.DisplayObjectContainer {
     private onReturnTop(evt:GameEvent):void {
         console.log("onReturnTop");
         this.cleanStage();
+        this._startGamePanel.resetView();
         this.addChild(this._startGamePanel);
     }
 

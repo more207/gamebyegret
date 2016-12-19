@@ -38,6 +38,10 @@ class GameData {
         this.playCount = 0;
     }
 
+    public getPointString() : string {
+        return this.winCount + "/" + this.playCount;
+    }
+
 // shuffle 
     public resetGame():void{
         this.cardDeck = new Array<Card>();
