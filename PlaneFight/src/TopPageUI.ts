@@ -1,0 +1,4 @@
+class TopPageUI {
+	public constructor() {
+	}
+}
