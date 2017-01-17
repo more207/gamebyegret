@@ -13,11 +13,22 @@ var game_file_list = [
 	"bin-debug/AirBlockUI.js",
 	"bin-debug/AssetAdapter.js",
 	"bin-debug/BattlePageUI.js",
-	"bin-debug/GameLogic.js",
+	"bin-debug/BattlePanelUI.js",
+	"bin-debug/core/GameData.js",
+	"bin-debug/core/GameEvent.js",
+	"bin-debug/core/GameInfo.js",
+	"bin-debug/core/GameLogic.js",
+	"bin-debug/element/BaseElement.js",
+	"bin-debug/element/BlockElement.js",
+	"bin-debug/element/PlaneElement.js",
 	"bin-debug/LoadingUI.js",
 	"bin-debug/Main.js",
 	"bin-debug/ThemeAdapter.js",
 	"bin-debug/TopPageUI.js",
+	"bin-debug/view/BaseElementView.js",
+	"bin-debug/view/BlockElementView.js",
+	"bin-debug/view/MainBattlePage.js",
+	"bin-debug/view/StartGamePage.js",
 	//----auto game_file_list end----
 ];
 

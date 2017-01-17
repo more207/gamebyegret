@@ -1,1 +1,1 @@
-{"version":3,"file":"BattlePageUI.js","sourceRoot":"","sources":["../src/BattlePageUI.ts"],"names":[],"mappings":"AAAA;IACC;IACA,CAAC;;IAGF,mBAAC;AAAD,CAAC,AALD,IAKC;oBALK,YAAY;AAKjB"}
+{"version":3,"file":"BattlePageUI.js","sourceRoot":"","sources":["../src/BattlePageUI.ts"],"names":[],"mappings":"AAAA;IAA2B,gCAAY;IACtC;QACC,iBAAO,CAAC;QAGF,WAAM,GAAqB,IAAI,KAAK,EAAc,CAAC;IAF1D,CAAC;;IAKF,mBAAC;AAAD,CAAC,AARD,CAA2B,KAAK,CAAC,MAAM,GAQtC;oBARK,YAAY;AAQjB"}
