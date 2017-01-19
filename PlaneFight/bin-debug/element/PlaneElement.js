@@ -88,6 +88,29 @@ var PlaneElement = (function (_super) {
         }
         return false;
     };
+    p.distroy = function () {
+        var gameData = GameData.getInstance();
+        var offset;
+        if (this.orientation == PlanHeadTo.Head_UP) {
+            offset = PlaneElement.toUp;
+        }
+        else if (this.orientation == PlanHeadTo.Head_DOWN) {
+            offset = PlaneElement.toDown;
+        }
+        else if (this.orientation == PlanHeadTo.Head_LEFT) {
+            offset = PlaneElement.toLeft;
+        }
+        else if (this.orientation == PlanHeadTo.Head_RIGHT) {
+            offset = PlaneElement.toRight;
+        }
+        // place
+        for (var i = 0; i < offset.length; i++) {
+            var aOffset = offset[i];
+            var aBlock = gameData.getBlockElement(this.posX + aOffset[0], this.posY + aOffset[1]);
+            aBlock.static = BlockStatic.StaticBEHIT;
+        }
+        return true;
+    };
     PlaneElement.toUp = [[0, -1], [-2, 0], [-1, 0], [0, 0], [1, 0], [2, 0], [0, 1], [-1, 2], [0, 2], [1, 2]];
     PlaneElement.toDown = [[-1, -2], [0, -2], [1, -2], [0, -1], [-2, 0], [-1, 0], [0, 0], [1, 0], [2, 0], [-1, 0]];
     PlaneElement.toLeft = [[-1, 0], [0, -2], [0, -1], [0, 0], [0, 1], [0, 2], [1, 0], [2, -1], [2, 0], [2, 1]];

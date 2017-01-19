@@ -45,8 +45,23 @@ class MainBattlePage extends egret.Sprite{
 	public onTouchBlock(e:egret.TouchEvent):void {
 		let ev:BlockElementView = <BlockElementView>e.currentTarget;
 		if(ev.isSelected()) {
-			ev.hitBlock();
 			this.preSelectElementId = -1;
+			var ret:number = ev.hitBlock();
+			if(ret == BlockValue.ValueMain){
+				GameLogic.destroyPlane(ev.posX, ev.posY);
+				//更新所有的方块
+				this.updatePage();
+			}
+
+			if (GameLogic.checkGameWin() == true) {
+
+				return;	
+			}
+
+			if (GameLogic.checkGameLose() == true) {
+				
+				return;
+			}
 		} else {
 			if(this.preSelectElementId != -1) {
 				this.battleBlockList[this.preSelectElementId].setUnSelect();
@@ -55,9 +70,15 @@ class MainBattlePage extends egret.Sprite{
 			ev.setSelected();
 			this.preSelectElementId = ev._id;
 		}
-
-		
 	}
 
+	public showGameWin() : boolean{
+		//this.dispatchEvent(GameEvent.getEventByName(GameEvent.EVENT_GAME_WIN));
+		return false;
+	}
+
+	public showGameLose() : boolean {
+		return false;	
+	}
 	
 }

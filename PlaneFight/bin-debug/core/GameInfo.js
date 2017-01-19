@@ -1,14 +1,6 @@
-var GameLevel;
-(function (GameLevel) {
-    GameLevel[GameLevel["NORMAL"] = 0] = "NORMAL";
-    GameLevel[GameLevel["HARD"] = 1] = "HARD";
-})(GameLevel || (GameLevel = {}));
-var GameInfo = (function () {
-    function GameInfo() {
-    }
-    var d = __define,c=GameInfo,p=c.prototype;
-    GameInfo.VERSION = 'v0.1';
-    return GameInfo;
-}());
-egret.registerClass(GameInfo,'GameInfo');
+var GameModel;
+(function (GameModel) {
+    GameModel[GameModel["MODEL_NORMAL"] = 0] = "MODEL_NORMAL";
+    GameModel[GameModel["MODEL_HARD"] = 1] = "MODEL_HARD";
+})(GameModel || (GameModel = {}));
 //# sourceMappingURL=GameInfo.js.map

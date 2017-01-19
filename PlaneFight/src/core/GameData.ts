@@ -1,24 +1,7 @@
 class GameData {
+	public static VERSION:string = 'v0.1';
 
-	public mapData:number[][];
-	public blockData:BlockElement[];
-	public planeList:PlaneElement[];
-
-	public maxRow:number;
-	public maxColume:number;
-	public maxPlaneCnt:number;
-	public blockCnt:number;
-
-	public constructor() {
-		this.maxRow = 10;
-		this.maxColume = 10;
-		this.blockCnt = 100;
-		this.maxPlaneCnt = 3;
-	}
-
-	private static _instance : GameData = null;
-
-    public static getInstance():GameData{
+	public static getInstance():GameData{
         if(GameData._instance == null){
             GameData._instance = new GameData();
         }
@@ -35,6 +18,30 @@ class GameData {
         return egret.MainContext.instance.stage.stageWidth;
     }
 
+	public mapData:number[][];
+	public blockData:BlockElement[];
+	public planeList:PlaneElement[];
+
+	public maxRow:number;
+	public maxColume:number;
+	public maxPlaneCnt:number;
+	public maxHitCnt:number;
+
+	public currentHitCnt:number;
+	
+
+	// game base info
+	public gameModel
+
+	public constructor() {
+		this.maxRow = 10;
+		this.maxColume = 10;
+		this.maxPlaneCnt = 3;
+
+	}
+
+	private static _instance : GameData = null;
+
 	public initData() {
 		this.blockData = [];
 		this.mapData = new Array();
@@ -44,6 +51,10 @@ class GameData {
 	public initBattle(){
 
 		this.initData();
+
+		this.currentHitCnt = 0;
+		this.maxHitCnt = 30;
+
 		var index = 0;
 		for(var x = 0; x< this.maxRow;x++) {
 			var col:number[] = new Array();		
@@ -93,4 +104,10 @@ class GameData {
 		var idx:number = this.mapData[x][y];
 		return this.blockData[idx];
 	}
+
+	public hitBlock(x:number, y:number) : number {
+		return 0;
+	}
+
+
 }

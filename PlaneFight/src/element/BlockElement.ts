@@ -28,7 +28,8 @@ class BlockElement extends BaseElement {
 		return false;
 	}
 
-	public hitBlock():void {
+	public hitBlock():number {
 		this.static = BlockStatic.StaticBEHIT;
+		return this.value;
 	}
 }

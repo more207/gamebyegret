@@ -37,8 +37,16 @@ var MainBattlePage = (function (_super) {
     p.onTouchBlock = function (e) {
         var ev = e.currentTarget;
         if (ev.isSelected()) {
-            ev.hitBlock();
             this.preSelectElementId = -1;
+            var ret = ev.hitBlock();
+            if (ret == BlockValue.ValueMain) {
+                GameLogic.destroyPlane(ev.posX, ev.posY);
+                //更新所有的方块
+                this.updatePage();
+            }
+            if (GameLogic.checkGameWin()) {
+                this.dispatchEvent(GameEvent.getEventByName(GameEvent.EVENT_GAME_WIN));
+            }
         }
         else {
             if (this.preSelectElementId != -1) {

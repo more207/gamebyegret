@@ -58,7 +58,7 @@ class PlaneElement extends BaseElement {
 
 	}
 
-	public tryToPlace(t:number, x:number, y:number):Boolean {
+	public tryToPlace(t:number, x:number, y:number):boolean {
 		var gameData = GameData.getInstance();
 		var offset :number[][];
 		if(t == PlanHeadTo.Head_UP) {
@@ -94,7 +94,7 @@ class PlaneElement extends BaseElement {
 		return true;
 	}
 
-	public isBeHit () {
+	public isBeHit () :boolean{
 		var gameData = GameData.getInstance();
 		var idx :number = gameData.mapData[this.posX][this.posY];	
 		if(gameData.blockData[idx].static == BlockStatic.StaticBEHIT){
@@ -102,5 +102,30 @@ class PlaneElement extends BaseElement {
 		}
 		return false;
 	}
+
+	public distroy() :boolean {
+		var gameData = GameData.getInstance();
+		var offset :number[][];
+		if(this.orientation == PlanHeadTo.Head_UP) {
+			offset = PlaneElement.toUp;
+		} else if(this.orientation == PlanHeadTo.Head_DOWN) {
+			offset = PlaneElement.toDown;
+		}else if(this.orientation == PlanHeadTo.Head_LEFT) {
+			offset = PlaneElement.toLeft;
+		}else if(this.orientation == PlanHeadTo.Head_RIGHT) {
+			offset = PlaneElement.toRight;
+		}
+
+		// place
+		for(var i = 0; i<offset.length; i++){
+			var aOffset = offset[i];
+			var aBlock:BlockElement = gameData.getBlockElement(this.posX + aOffset[0], this.posY + aOffset[1]);
+			aBlock.static = BlockStatic.StaticBEHIT;
+		}
+
+		return true;
+	}
+
+	
 
 }

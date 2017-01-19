@@ -87,9 +87,10 @@ var BlockElementView = (function (_super) {
     };
     p.hitBlock = function () {
         var aBlock = GameData.getInstance().getBlockElement(this.posX, this.posY);
-        aBlock.hitBlock();
+        var ret = aBlock.hitBlock();
         this._selectedFLg = false;
         this.updateView();
+        return ret;
     };
     BlockElementView.viewWidth = 60;
     BlockElementView.viewHeight = 60;

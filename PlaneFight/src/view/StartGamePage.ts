@@ -21,7 +21,7 @@ class StartGamePage extends egret.Sprite {
 		this.addChild(this._titleLabel);
 
 		this._versionLabel = new egret.TextField();
-		this._versionLabel.text = GameInfo.VERSION;
+		this._versionLabel.text = GameData.VERSION;
 		this._versionLabel.size = 20;
 		this._versionLabel.width = 80; 
 		this._versionLabel.x = GameData.getStageWidth() - 100;

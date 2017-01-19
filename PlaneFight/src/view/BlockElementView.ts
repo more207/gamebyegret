@@ -81,7 +81,7 @@ class BlockElementView extends BaseElementView {
 		}
 	}
 
-	public setSelected():Boolean{
+	public setSelected():boolean{
 		var aBlock:BlockElement = GameData.getInstance().getBlockElement(this.posX,this.posY);
 		if(aBlock.static == BlockStatic.StaticBEHIT){
 			return false;
@@ -91,20 +91,21 @@ class BlockElementView extends BaseElementView {
 		return true;
 	}
 
-	public isSelected(){
+	public isSelected() : boolean{
 		return this._selectedFLg;
 	}
 
-	public setUnSelect() {
+	public setUnSelect():void {
 		this._selectedFLg = false;
 		this.updateView();
 	}
 
-	public hitBlock() {
+	public hitBlock():number {
 		var aBlock:BlockElement = GameData.getInstance().getBlockElement(this.posX,this.posY);
-		aBlock.hitBlock();
+		var ret:number = aBlock.hitBlock();
 		this._selectedFLg = false;
 		this.updateView();
+		return ret;
 	}
 
 	

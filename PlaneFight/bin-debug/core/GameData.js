@@ -66,6 +66,10 @@ var GameData = (function () {
         var idx = this.mapData[x][y];
         return this.blockData[idx];
     };
+    p.hitBlock = function (x, y) {
+        return 0;
+    };
+    GameData.VERSION = 'v0.1';
     GameData._instance = null;
     return GameData;
 }());

@@ -25,6 +25,7 @@ var BlockElement = (function (_super) {
     };
     p.hitBlock = function () {
         this.static = BlockStatic.StaticBEHIT;
+        return this.value;
     };
     return BlockElement;
 }(BaseElement));
